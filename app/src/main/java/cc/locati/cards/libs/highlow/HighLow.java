@@ -1,7 +1,7 @@
 package cc.locati.cards.libs.highlow;
 
-import cc.locati.cards.libs.Card;
-import cc.locati.cards.libs.Deck;
+import cc.locati.cards.libs.cards.Card;
+import cc.locati.cards.libs.cards.Deck;
 import cc.locati.cards.libs.tools.TextIO;
 
 /**

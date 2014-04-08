@@ -1,7 +1,7 @@
 package cc.locati.cards.libs.tests;
 
-import cc.locati.cards.libs.Card;
-import cc.locati.cards.libs.Deck;
+import cc.locati.cards.libs.cards.Card;
+import cc.locati.cards.libs.cards.Deck;
 
 /**
  * This program lets check all cards in a 2 decks deck drawing them all.
