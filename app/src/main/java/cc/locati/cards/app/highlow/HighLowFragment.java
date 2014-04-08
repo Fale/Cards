@@ -38,20 +38,21 @@ public class HighLowFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         comments = (TextView) getView().findViewById(R.id.textComments);
         points = (TextView) getView().findViewById(R.id.points);
         currentCardImage = (TextView) getView().findViewById(R.id.card);
         record = (TextView) getView().findViewById(R.id.record);
-
-/*        SVGImageView currentCardImage = (SVGImageView)findViewById(R.id.imageView);
-        currentCardImage.setImageAsset(currentCard.getAsset());*/
-
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         recordScore = sharedPref.getInt("recordScore", 0);
 
+/*        SVGImageView currentCardImage = (SVGImageView)findViewById(R.id.imageView);
+        currentCardImage.setImageAsset(currentCard.getAsset());*/
+    }
+
+    public void onStart() {
         final Button buttonHigher = (Button) getView().findViewById(R.id.buttonHigher);
         buttonHigher.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
