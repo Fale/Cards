@@ -1,6 +1,6 @@
-package cc.locati.cards.libs.cards;
+package cc.locati.cards.libs;
 
-import cc.locati.cards.libs.cards.Card;
+import cc.locati.cards.libs.Card;
 
 /**
  * This class is used to create Decks for games (so they can be composed of one or more card decks)

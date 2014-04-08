@@ -1,4 +1,4 @@
-package cc.locati.cards.libs.cards;
+package cc.locati.cards.libs;
 
 /**
  * An object of type Hand represents a hand of cards.  The
@@ -9,7 +9,7 @@ package cc.locati.cards.libs.cards;
 
 import java.util.ArrayList;
 
-import cc.locati.cards.libs.cards.Card;
+import cc.locati.cards.libs.Card;
 
 public class Hand {
 

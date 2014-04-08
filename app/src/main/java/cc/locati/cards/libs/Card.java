@@ -1,4 +1,4 @@
-package cc.locati.cards.libs.cards;
+package cc.locati.cards.libs;
 
 import android.content.Context;
 

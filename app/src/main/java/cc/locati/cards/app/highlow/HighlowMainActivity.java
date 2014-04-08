@@ -4,14 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.caverock.androidsvg.SVGImageView;
-
 import cc.locati.cards.app.R;
-import cc.locati.cards.libs.cards.Card;
-import cc.locati.cards.libs.cards.Deck;
+import cc.locati.cards.libs.Card;
+import cc.locati.cards.libs.Deck;
 
 public class HighlowMainActivity extends ActionBarActivity {
 
