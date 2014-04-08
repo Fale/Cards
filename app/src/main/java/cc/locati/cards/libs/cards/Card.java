@@ -1,16 +1,22 @@
 package cc.locati.cards.libs.cards;
 
+import android.content.Context;
+
+import com.caverock.androidsvg.SVGImageView;
+
 public class Card {
 
-    public final static int SPADES = 0;       // Codes for the 4 suits, plus Joker.
-    public final static int HEARTS = 1;
-    public final static int DIAMONDS = 2;
-    public final static int CLUBS = 3;
+    // Codes for the 4 suits, plus Joker.
+    public final static int HEARTS = 0;
+    public final static int DIAMONDS = 1;
+    public final static int CLUBS = 2;
+    public final static int SPADES = 3;
     public final static int JOKER = 4;
 
-    public final static int ACE = 1;          // Codes for the non-numeric cards.
-    public final static int JACK = 11;        //   Cards 2 through 10 have their
-    public final static int QUEEN = 12;       //   numerical values for their codes.
+    // Codes for the non-numeric cards.
+    public final static int ACE = 1;
+    public final static int JACK = 11;
+    public final static int QUEEN = 12;
     public final static int KING = 13;
 
     /**
@@ -134,6 +140,20 @@ public class Card {
         }
     }
 
+    public String getValueAsShortString() {
+        if (suit == JOKER)
+            return "" + value;
+        else {
+            switch ( value ) {
+                case 1:   return "A";
+                case 11:  return "J";
+                case 12:  return "Q";
+                case 13:  return "K";
+                default:  return getValueAsString();
+            }
+        }
+    }
+
     /**
      * Returns a string representation of this card, including both
      * its suit and its value (except that for a Joker with value 1,
@@ -152,5 +172,15 @@ public class Card {
             return getValueAsString() + " of " + getSuitAsString();
     }
 
+    private Context mContext;
 
+    public SVGImageView getImage() {
+        SVGImageView svgImageView = new SVGImageView(mContext);
+        svgImageView.setImageAsset(getAsset());
+        return svgImageView;
+    }
+
+    public String getAsset() {
+        return "decks/default/" + suit + "/" + getValueAsShortString() + ".svg";
+    }
 } // end class Card

@@ -14,10 +14,15 @@
             android:theme="@style/FullscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SingleViewActivity"></activity>
+        <activity android:name="cc.locati.cards.app.SingleViewActivity" />
+        <activity
+            android:name="cc.locati.cards.app.highlow.HighlowMainActivity"
+            android:label="@string/title_activity_highlow_main" >
+        </activity>
     </application>
 
 </manifest>
