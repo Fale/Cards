@@ -37,6 +37,19 @@ public class HighLowFragment extends Fragment {
     View view;
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        recordScore = sharedPref.getInt("recordScore", 0);
+
+        deck.shuffle();
+        currentCard = deck.dealCard();
+        nextCard = deck.dealCard();
+        correctGuesses = 0;
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_highlow_main, container, false);
         super.onCreate(savedInstanceState);
@@ -45,8 +58,6 @@ public class HighLowFragment extends Fragment {
         points = (TextView) view.findViewById(R.id.points);
         currentCardImage = (TextView) view.findViewById(R.id.card);
         record = (TextView) view.findViewById(R.id.record);
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        recordScore = sharedPref.getInt("recordScore", 0);
 
 //        SVGImageView currentCardImage = (SVGImageView)findViewById(R.id.imageView);
 //        currentCardImage.setImageAsset(currentCard.getAsset());
@@ -72,7 +83,10 @@ public class HighLowFragment extends Fragment {
             }
         });
 
-        drawFirstCard();
+        record.setText(Integer.toString(recordScore));
+        currentCardImage.setText(currentCard.getAsset());
+        points.setText(Integer.toString(correctGuesses));
+        comments.setText("");
 
         return view;
     }
@@ -134,7 +148,7 @@ public class HighLowFragment extends Fragment {
         nextCard = deck.dealCard();
         currentCardImage.setText(currentCard.getAsset());
         correctGuesses = 0;
-        points.setText("");
+        points.setText(Integer.toString(correctGuesses));
         comments.setText("");
     }
 
