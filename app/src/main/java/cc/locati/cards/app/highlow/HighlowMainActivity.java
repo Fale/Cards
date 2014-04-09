@@ -1,10 +1,10 @@
 package cc.locati.cards.app.highlow;
 
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import cc.locati.cards.app.R;
 
-public class HighlowMainActivity extends Activity {
+public class HighlowMainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

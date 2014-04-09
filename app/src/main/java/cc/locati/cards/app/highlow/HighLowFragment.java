@@ -6,7 +6,9 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.app.AlertDialog;
@@ -32,42 +34,38 @@ public class HighLowFragment extends Fragment {
     TextView record;
     TextView currentCardImage;
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-    }
+    View view;
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.activity_highlow_main, container, false);
         super.onCreate(savedInstanceState);
 
-        comments = (TextView) getView().findViewById(R.id.textComments);
-        points = (TextView) getView().findViewById(R.id.points);
-        currentCardImage = (TextView) getView().findViewById(R.id.card);
-        record = (TextView) getView().findViewById(R.id.record);
+        comments = (TextView) view.findViewById(R.id.textComments);
+        points = (TextView) view.findViewById(R.id.points);
+        currentCardImage = (TextView) view.findViewById(R.id.card);
+        record = (TextView) view.findViewById(R.id.record);
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         recordScore = sharedPref.getInt("recordScore", 0);
 
-/*        SVGImageView currentCardImage = (SVGImageView)findViewById(R.id.imageView);
-        currentCardImage.setImageAsset(currentCard.getAsset());*/
-    }
+//        SVGImageView currentCardImage = (SVGImageView)findViewById(R.id.imageView);
+//        currentCardImage.setImageAsset(currentCard.getAsset());
 
-    public void onStart() {
-        final Button buttonHigher = (Button) getView().findViewById(R.id.buttonHigher);
+        final Button buttonHigher = (Button) view.findViewById(R.id.buttonHigher);
         buttonHigher.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 makeChoice('H');
             }
         });
 
-        final Button buttonEqual = (Button) getView().findViewById(R.id.buttonEqual);
+        final Button buttonEqual = (Button) view.findViewById(R.id.buttonEqual);
         buttonEqual.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 makeChoice('E');
             }
         });
 
-        final Button buttonLower = (Button) getView().findViewById(R.id.buttonLower);
+        final Button buttonLower = (Button) view.findViewById(R.id.buttonLower);
         buttonLower.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 makeChoice('L');
@@ -75,6 +73,8 @@ public class HighLowFragment extends Fragment {
         });
 
         drawFirstCard();
+
+        return view;
     }
 
     private void makeChoice(char choice) {
