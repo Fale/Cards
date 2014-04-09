@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -135,13 +136,13 @@ public class HighLowFragment extends Fragment {
                     }
                 });
 
-        AlertDialog alert = builder.create();
-        alert.setCanceledOnTouchOutside(false);
-        alert.setCancelable(false);
-        alert.show();
+        FragmentManager fm = getFragmentManager();
+        LostDialogFragment lostDialog = new LostDialogFragment();
+//        lostDialog.setCanceledOnTouchOutside(false);
+        lostDialog.show(fm, "fragment_edit_name");
     }
 
-    private void drawFirstCard() {
+    protected void drawFirstCard() {
         record.setText(Integer.toString(recordScore));
         deck.shuffle();
         currentCard = deck.dealCard();
@@ -161,4 +162,5 @@ public class HighLowFragment extends Fragment {
         } else
             comments.setText("You won");
     }
+
 }
