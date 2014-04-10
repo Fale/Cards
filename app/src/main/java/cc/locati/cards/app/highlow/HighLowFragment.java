@@ -18,7 +18,7 @@ import cc.locati.cards.app.R;
 import cc.locati.cards.libs.Card;
 import cc.locati.cards.libs.Deck;
 
-public class HighLowFragment extends Fragment {
+public class HighLowFragment extends Fragment  implements LostDialogFragment.LostListener {
 
     int correctGuesses;
     int recordScore;
@@ -136,10 +136,21 @@ public class HighLowFragment extends Fragment {
                     }
                 });
 
-        FragmentManager fm = getFragmentManager();
-        LostDialogFragment lostDialog = new LostDialogFragment();
-//        lostDialog.setCanceledOnTouchOutside(false);
-        lostDialog.show(fm, "fragment_edit_name");
+ /*       @Override
+        public void onClick(View arg0) {
+            //FragmentManager fm = getFragmentManager();
+            LostDialogFragment lostDialog = new LostDialogFragment();
+//          lostDialog.setCanceledOnTouchOutside(false);
+            lostDialog.show(getFragmentManager(), "fragment_edit_name");
+            //Here
+            //MyDialogFragment dialog = MyDialogFragment.newInstance();
+            //dialog.show(getFragmentManager(), "fragmentDialog");
+        }
+*/
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        LostDialogFragment dialog = new LostDialogFragment(); // creating new object
+        dialog.show(fm, "dialog");
+
     }
 
     protected void drawFirstCard() {
@@ -163,4 +174,12 @@ public class HighLowFragment extends Fragment {
             comments.setText("You won");
     }
 
+
+    public void onTryAgain() {
+        drawFirstCard();
+    }
+
+    public void onQuit() {
+        getActivity().finish();
+    }
 }

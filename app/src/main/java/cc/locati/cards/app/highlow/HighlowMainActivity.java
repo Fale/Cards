@@ -8,25 +8,13 @@ import android.widget.TextView;
 
 import cc.locati.cards.app.R;
 
-public class HighlowMainActivity extends FragmentActivity  implements LostDialogFragment.LostListener {
-
-    HighLowFragment fragment;
+public class HighlowMainActivity extends FragmentActivity  implements View.OnClick{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.highlow_single_fragment_layout);
-
-        fragment = (HighLowFragment) getSupportFragmentManager().findFragmentByTag("highlow");
-    }
-
-    public void onTryAgain() {
-        fragment.drawFirstCard();
-    }
-
-    public void onQuit() {
-        finish();
     }
 
 }

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.appcompat.R;
+import android.content.Context;
 
 /**
  * Created by fale on 09/04/14.
@@ -15,16 +16,18 @@ public class LostDialogFragment extends DialogFragment {
 
     public interface LostListener {
         void onTryAgain();
-
         void onQuit();
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (!(activity instanceof LostListener)) {
-            throw new ClassCastException(activity.toString() + " must implement LostListener");
-        }
+    Context mContext;
+
+    public LostDialogFragment() {
+        mContext = getActivity();
+    }
+
+    public static LostDialogFragment newInstance() {
+        LostDialogFragment f = new LostDialogFragment();
+        return f;
     }
 
     @Override

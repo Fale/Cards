@@ -2,6 +2,7 @@ package cc.locati.cards.libs.poker;
 
 import java.util.ArrayList;
 
+import cc.locati.cards.HandAnalyzer;
 import cc.locati.cards.libs.Card;
 import cc.locati.cards.libs.Hand;
 
@@ -44,72 +45,19 @@ public class PokerAI {
      * @return list of cards to Keep (AKA: trash all the other cards)
      */
     public ArrayList<Card> getCardsToKeep() {
-        if (!poker().isEmpty())
-            return poker();
+        HandAnalyzer analyzer = new HandAnalyzer(hand);
+        if (hand.getCountPokers() > 0)
+            return analyzer.pokers(hand);
         // Full here
-        if (!triple().isEmpty())
-            return triple();
-        if (!pairs().isEmpty())
-            return pairs();
+        if (hand.getCountTriples() > 0)
+            return analyzer.triples(hand);
+        //if (hand.getCountPairs() > 0)
+            //return analyzer.pairs(hand);
         // Colors and scales are to be checked yet
         // If nothing goes right, we will have to choose a single card to keep (max change is 4)
         ArrayList<Card> cardsToKeep = new ArrayList<Card>();
         return cardsToKeep;
     }
 
-    /**
-     * Identify pairs and double pairs.
-     * @return cards of the pair(s)
-     */
-    public ArrayList<Card> pairs() {
-        hand.sortByValue();
-        ArrayList<Card> importantCards = new ArrayList<Card>();
-        for (int card = 1; card < hand.getCardCount(); card++) {
-            if (hand.getCard(card) == hand.getCard(card - 1)) {
-                importantCards.add(hand.getCard(card));
-                importantCards.add(hand.getCard(card - 1));
-                card++;
-            }
-        }
-        return importantCards;
-    }
-
-    /**
-     * Identify triple.
-     * @return cards of the triple
-     */
-    public ArrayList<Card> triple() {
-        hand.sortByValue();
-        ArrayList<Card> importantCards = new ArrayList<Card>();
-        for (int card = 2; card < hand.getCardCount(); card++) {
-            if (hand.getCard(card) == hand.getCard(card - 1) &&
-                    hand.getCard(card) == hand.getCard(card - 2)) {
-                importantCards.add(hand.getCard(card));
-                importantCards.add(hand.getCard(card - 1));
-                importantCards.add(hand.getCard(card - 2));
-            }
-        }
-        return importantCards;
-    }
-
-    /**
-     * Identify poker.
-     * @return cards of the poker
-     */
-    public ArrayList<Card> poker() {
-        hand.sortByValue();
-        ArrayList<Card> importantCards = new ArrayList<Card>();
-        for (int card = 3; card < hand.getCardCount(); card++) {
-            if (hand.getCard(card) == hand.getCard(card - 1) &&
-                    hand.getCard(card) == hand.getCard(card - 2) &&
-                    hand.getCard(card) == hand.getCard(card - 3)) {
-                importantCards.add(hand.getCard(card));
-                importantCards.add(hand.getCard(card - 1));
-                importantCards.add(hand.getCard(card - 2));
-                importantCards.add(hand.getCard(card - 3));
-            }
-        }
-        return importantCards;
-    }
 
 }

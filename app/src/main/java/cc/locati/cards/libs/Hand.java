@@ -15,6 +15,11 @@ public class Hand {
 
     private ArrayList hand;   // The cards in the hand.
 
+    class CardsGroup {
+        int value;
+        int count;
+    }
+
     /**
 
      * Create a hand that is initially empty.
@@ -139,4 +144,74 @@ public class Hand {
         }
         hand = newHand;
     }
+
+
+    public int getCountByNumber(int number) {
+        int count = 0;
+        for (int card = 0; card < getCardCount(); card++) {
+            if (getCard(card).getValue() == number)
+                count++;
+        }
+        return count;
+    }
+
+    public int getCountBySuit (int suit) {
+        int count = 0;
+        for (int card = 0; card < getCardCount(); card++) {
+            if (getCard(card).getSuit() == suit)
+                count++;
+        }
+        return count;
+    }
+
+    public ArrayList<CardsGroup> groupByNumber() {
+        ArrayList<CardsGroup> groups = new ArrayList<CardsGroup>();
+        for (int value = 1; value < 13; value++) {
+            CardsGroup cardsGroup = new CardsGroup();
+            cardsGroup.value = value;
+            cardsGroup.count = getCountByNumber(value);
+            groups.add(cardsGroup);
+        }
+        return groups;
+    }
+
+    public ArrayList<CardsGroup> groupBySuit() {
+        ArrayList<CardsGroup> groups = new ArrayList<CardsGroup>();
+        for (int value = 1; value < 13; value++) {
+            CardsGroup cardsGroup = new CardsGroup();
+            cardsGroup.value = value;
+            cardsGroup.count = getCountBySuit(value);
+            groups.add(cardsGroup);
+        }
+        return groups;
+    }
+
+    /**
+     * Identify pairs and double pairs.
+     * @return cards of the pair(s)
+     */
+    public int getCountPairs() {
+        return getCountGroupByNumber(2);
+    }
+
+    public int getCountTriples() {
+        return getCountGroupByNumber(3);
+    }
+
+    public int getCountPokers() {
+        return getCountGroupByNumber(4);
+    }
+
+    public int getCountGroupByNumber(int cardsNumber) {
+        int groups = 0;
+        ArrayList<CardsGroup> cards = groupByNumber();
+        CardsGroup group = new CardsGroup();
+        for (int pointer = 0; pointer < cards.size(); pointer++) {
+            group = cards.get(pointer);
+            if (group.count == cardsNumber)
+                groups++;
+        }
+        return groups;
+    }
+
 }
