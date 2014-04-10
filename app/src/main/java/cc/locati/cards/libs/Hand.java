@@ -65,6 +65,14 @@ public class Hand {
     }
 
     /**
+     * Remove all cards but the Cards in the ArrayList
+     * @param newHand Cards to keep in the hand
+     */
+    public void removeAllBut(ArrayList<Card> newHand) {
+        hand = newHand;
+    }
+
+    /**
      * Returns the number of cards in the hand.
      */
     public int getCardCount() {
@@ -131,5 +139,4 @@ public class Hand {
         }
         hand = newHand;
     }
-
 }
