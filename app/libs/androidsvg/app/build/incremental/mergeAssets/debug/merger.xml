@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="/home/fale/AndroidStudioProjects/Cards/app/libs/androidsvg-a3023068b25d/app/src/main/assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/home/fale/AndroidStudioProjects/Cards/app/libs/androidsvg-a3023068b25d/app/src/debug/assets" />
+    </dataSet>
+
+</merger>

@@ -1,0 +1,8 @@
+<!-- From: file:/home/fale/AndroidStudioProjects/Cards/app/libs/androidsvg-a3023068b25d/app/src/main/AndroidManifest.xml --><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.caverock.androidsvg">
+
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16"/>
+
+    <application>
+    </application>
+
+</manifest>

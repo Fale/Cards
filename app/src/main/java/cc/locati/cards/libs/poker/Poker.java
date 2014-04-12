@@ -11,7 +11,7 @@ public class Poker {
     private Deck deck;
 
     private Hand[] hands;
-
+/*
     public void Poker(int players) {
         deck.shuffle();
         while (players > 0) {
@@ -21,7 +21,7 @@ public class Poker {
             players--;
         }
     }
-
+*/
     public void playerMove(int player) {
         // Choose
         // Act

@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import cc.locati.cards.app.R;
 
-public class HighlowMainActivity extends FragmentActivity  implements View.OnClick{
+public class HighlowMainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
